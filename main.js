@@ -1,30 +1,30 @@
 var IOTA = require('iota.lib.js');
-var fs = require("fs")
+//var fs = require("fs");
 var iota = new IOTA({
   'provider': 'http://node01.iotameetup.nl:14265'
 });
-var seed = process.argv[2] + "" // in case the seed is all 9's (GOSH I HOPE NOT)
+var seed = "HJKDGHSJKGSHJGHJGJHKHJKHJKHJKHKJHKFGHSDFGSDHJSDGFHJSDGFJSDGFJDGJFGSDJFGSDJGJSDHFG" // in case the seed is all 9's (GOSH I HOPE NOT)
+//var seed = process.argv[2] + ""
 var status = 'checking'
-var snapshotSep = fs.readFileSync('snapshot_september.txt').toString().split("\n");
-var snapshotOct = fs.readFileSync('snapshot_october.txt').toString().split("\n");
+var snapshotSep = require('fs').readFileSync('snapshot_september.txt', 'utf-8').toString().split("\n");
+var snapshotOct = require('fs').readFileSync('snapshot_october.txt', 'utf-8').toString().split("\n");
 
 if (seed.length !== 81) {
-  console.error("Seed is not 81 characters!")
-  return
+  console.error("Seed is not 81 characters!");
 }
 
-const readline = require('readline');
-readline.emitKeypressEvents(process.stdin);
-process.stdin.setRawMode(true);
-process.stdin.on('keypress', (str, key) => {
-  if (key.ctrl && key.name === 'c') {
-    process.exit();
-  } else {
-    if (key.name === 'i') {
-      process.exit();
-    }
-  }
-})
+// const readline = require('readline');
+// readline.emitKeypressEvents(process.stdin);
+// process.stdin.setRawMode(true);
+// process.stdin.on('keypress', (str, key) => {
+//   if (key.ctrl && key.name === 'c') {
+//     process.exit();
+//   } else {
+//     if (key.name === 'i') {
+//       process.exit();
+//     }
+//   }
+// })
 
 
 console.log('Checking your balance...Press i at any time to stop...');
